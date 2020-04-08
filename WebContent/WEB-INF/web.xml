@@ -10,5 +10,15 @@
 	<servlet-name>home</servlet-name>
 	<url-pattern>/</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>point</servlet-name>
+	<servlet-class>com.coupang.home.HomeController</servlet-class>
+</servlet>  
+  
+<servlet-mapping>
+	<servlet-name>point</servlet-name>
+	<url-pattern>/point/pointList/pointList</url-pattern>
+</servlet-mapping>
  
 </web-app>
