@@ -42,9 +42,45 @@
     <h1>Bootstrap Tutorial</h1>      
     <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
   </div>
-  <p>This is some text.</p>      
-  <p>This is another text.</p>      
+  <p></p>      
+  <p></p>      
 </div>
-	<h1>Point Add form</h1>
+	<div class="container">
+		<div class="row">
+		<h1>Point Add form</h1>
+		<h1>Point Select Page</h1>
+  <h2>Point Input</h2>
+  <form action="./pointAdd" method="post">
+    <div class="form-group">
+      <label for="Name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+    </div>
+    
+    <div class="form-group">
+      <label for="Num">Num:</label>
+      <input type="text" class="form-control" id="num" placeholder="Enter Num" name="num">
+    </div>
+    
+   <div class="form-group">
+      <label for="Kor">Kor:</label>
+      <input type="text" class="form-control" id="kor" placeholder="Enter Kor" name="kor">
+    </div>
+   
+   <div class="form-group">
+      <label for="Eng">Eng:</label>
+      <input type="text" class="form-control" id="eng" placeholder="Enter Eng" name="eng">
+    </div>
+   
+   <div class="form-group">
+      <label for="Math:">Math:</label>
+      <input type="text" class="form-control" id="math" placeholder="Enter Math:" name="math">
+
+    </div>
+ 
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+	
+	
 </body>
 </html>

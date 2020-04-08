@@ -11,6 +11,13 @@ public class PointService {
 		this.pointDTO = new PointDTO();
 		this.pointDAO = new PointDAO(); 
 	}
+
+	//4. add
+	public PointDTO pointAdd(PointDTO pointDTO) throws Exception{
+		pointDTO.setTotal(pointDTO.getKor()+pointDTO.getEng()+pointDTO.getMath());
+		point
+		return pointDAO.pointAdd(pointDTO);
+	}
 	
 	//3. delete
 	public PointDTO pointDelete(int num) throws Exception{

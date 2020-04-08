@@ -10,6 +10,33 @@ import com.coupang.util.DBConnector;
 public class PointDAO {
 	// DAO (Data Access Object)
 
+	//4. Add
+	public pointDTO pointAdd(PointDTO pointDTO) throws Exception{
+		
+		Connection con = DBConnector.getConnection();
+		
+		String sql= "insert into point values(?,?,?,?,?,?,?)";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pointDTO.getName());
+		st.setInt(2, pointDTO.getNum());
+		st.setInt(3, pointDTO.getKor());
+		st.setInt(4, pointDTO.getEng());
+		st.setInt(5, pointDTO.getMath());
+		st.setInt(6, pointDTO.getTotal());
+		st.setDouble(7, pointDTO.getAvg());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return pointDTO;
+	}
+	
+	
+	
 	//3. Delete
 	public PointDTO pointDelete(int num) throws Exception{
 		PointDTO pointDTO = null;
