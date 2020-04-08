@@ -1,6 +1,7 @@
 package com.coupang.point;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,12 +16,13 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/PointController")
 public class PointController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private PointService pointService;
     /**
      * @see HttpServlet#HttpServlet()
      */
     public PointController() {
         super();
+        this.pointService = new PointService();
         // TODO Auto-generated constructor stub
     }
 
@@ -43,12 +45,13 @@ public class PointController extends HttpServlet {
 		
 		//URL path를 담을 변수
 		String path ="";
-
+		try {
 		if(command.equals("/pointList")) {
-			
-			
+				ArrayList<PointDTO> ar= pointService.pointList();
+				request.setAttribute("list", ar);
 			
 			path = "../WEB-INF/views/point/pointList.jsp";
+			
 		}else if(command.equals("/pointAdd")) {
 			if(method.equals("POST")) {
 			}else { 
@@ -61,12 +64,29 @@ public class PointController extends HttpServlet {
 				path = "../WEB-INF/views/point/pointMod.jsp";
 			}
 		}else if(command.equals("/pointSelect")) {
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			
+			PointDTO pointDTO = pointService.pointSelect(num);
+			
+			request.setAttribute("dto", pointDTO);
+			
 			path = "../WEB-INF/views/point/pointSelect.jsp";
+			
 		}else if(command.equals("/pointDelete")) {
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			PointDTO pointDTO = pointService.pointDelete(num);
+			check = false;
+			path = "./pointList";
+			
 		}else {
 			System.out.println("ETC");
 		}
-		
+	}
+		catch (Exception e) {
+			e.printStackTrace(); 	//에러 메세지 출력
+		}
 		//
 		if(check) {
 			RequestDispatcher view = request.getRequestDispatcher(path);
@@ -74,7 +94,6 @@ public class PointController extends HttpServlet {
 		}else {
 			response.sendRedirect(path);
 		}
-		
 	}
 
 	/**
