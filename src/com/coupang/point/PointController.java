@@ -63,8 +63,13 @@ public class PointController extends HttpServlet {
 				pointDTO.setEng(Integer.parseInt(request.getParameter("eng")));
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
 				
-				
-				
+				int result = pointService.pointAdd(pointDTO);
+				path="../WEB-INF/views/result/result.jsp";
+				String msg="fail";
+				if(result >0 ) {
+					msg = "success";
+				}
+				request.setAttribute("result", msg);
 			}else { 
 				path = "../WEB-INF/views/point/pointAdd.jsp";
 			}

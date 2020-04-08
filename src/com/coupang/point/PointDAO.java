@@ -11,7 +11,7 @@ public class PointDAO {
 	// DAO (Data Access Object)
 
 	//4. Add
-	public pointDTO pointAdd(PointDTO pointDTO) throws Exception{
+	public int pointAdd(PointDTO pointDTO) throws Exception{
 		
 		Connection con = DBConnector.getConnection();
 		
@@ -32,7 +32,7 @@ public class PointDAO {
 		st.close();
 		con.close();
 		
-		return pointDTO;
+		return result;
 	}
 	
 	
