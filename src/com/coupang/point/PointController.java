@@ -1,6 +1,8 @@
 package com.coupang.point;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,31 +41,38 @@ public class PointController extends HttpServlet {
 		//Forward(true), redirect(false) 선택
 		boolean check = true;
 		
-		//path를 담을 변수
+		//URL path를 담을 변수
 		String path ="";
 
 		if(command.equals("/pointList")) {
-			System.out.println("list");
+			
+			
+			
+			path = "../WEB-INF/views/point/pointList.jsp";
 		}else if(command.equals("/pointAdd")) {
-			System.out.println("Add");
 			if(method.equals("POST")) {
-				
-			}else {
-				
+			}else { 
+				path = "../WEB-INF/views/point/pointAdd.jsp";
 			}
 		}else if(command.equals("/pointMod")) {
-			System.out.println("mod");
 			if(method.equals("POST")) {
 				
 			}else {
-				
+				path = "../WEB-INF/views/point/pointMod.jsp";
 			}
 		}else if(command.equals("/pointSelect")) {
-			System.out.println("select");
+			path = "../WEB-INF/views/point/pointSelect.jsp";
 		}else if(command.equals("/pointDelete")) {
-			System.out.println("delete");
 		}else {
 			System.out.println("ETC");
+		}
+		
+		//
+		if(check) {
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
+		}else {
+			response.sendRedirect(path);
 		}
 		
 	}
