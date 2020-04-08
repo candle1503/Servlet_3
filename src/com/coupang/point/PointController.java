@@ -41,6 +41,30 @@ public class PointController extends HttpServlet {
 		
 		//path를 담을 변수
 		String path ="";
+
+		if(command.equals("/pointList")) {
+			System.out.println("list");
+		}else if(command.equals("/pointAdd")) {
+			System.out.println("Add");
+			if(method.equals("POST")) {
+				
+			}else {
+				
+			}
+		}else if(command.equals("/pointMod")) {
+			System.out.println("mod");
+			if(method.equals("POST")) {
+				
+			}else {
+				
+			}
+		}else if(command.equals("/pointSelect")) {
+			System.out.println("select");
+		}else if(command.equals("/pointDelete")) {
+			System.out.println("delete");
+		}else {
+			System.out.println("ETC");
+		}
 		
 	}
 
