@@ -13,12 +13,12 @@
 
 <servlet>
 	<servlet-name>point</servlet-name>
-	<servlet-class>com.coupang.home.HomeController</servlet-class>
+	<servlet-class>com.coupang.point.PointController</servlet-class>
 </servlet>  
   
 <servlet-mapping>
 	<servlet-name>point</servlet-name>
-	<url-pattern>/point/pointList/pointList</url-pattern>
+	<url-pattern>/point/*</url-pattern>
 </servlet-mapping>
  
 </web-app>
