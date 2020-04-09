@@ -7,6 +7,21 @@
 - 로그인(select One)
 - 회원수정(update)
 - 회원탈퇴(Delete)
+- myPage(
+
+##JSP
+- /WEB-INF/views/member/...
+
+URL
+/member/memberJoin			memberJoin.jsp			GET
+/member/memberJoin									POST
+/member/memberLogin			memberLogin.jsp			GET
+/member/memberLogin									POST
+/member/memberPage			memberPage.jsp			GET
+/member/memberUpdate		memberUpdate.jsp		GET
+/member/memberUpdate								POST
+/member/memberDelete								GET
+
 
 ### point
 - point list 출력
