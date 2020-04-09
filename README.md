@@ -1,6 +1,14 @@
 # Servlet_3
 
 # 기능
+
+### Member
+- 회원가입(insert)
+- 로그인(select One)
+- 회원수정(update)
+- 회원탈퇴(Delete)
+
+### point
 - point list 출력
 - point 등록
 - point 하나 상세 정보 출력

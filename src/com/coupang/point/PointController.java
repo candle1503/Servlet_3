@@ -113,7 +113,6 @@ public class PointController extends HttpServlet {
 			
 		}else if(command.equals("/pointDelete")) {
 			
-			System.out.println("hi");
 			int num = Integer.parseInt(request.getParameter("num"));
 			int result = pointService.pointDelete(num);
 			check = false;
