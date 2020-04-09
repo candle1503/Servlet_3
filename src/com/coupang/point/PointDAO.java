@@ -63,7 +63,7 @@ public class PointDAO {
 	
 	
 	//3. Delete
-	public PointDTO pointDelete(int num) throws Exception{
+	public int pointDelete(int num) throws Exception{
 		PointDTO pointDTO = null;
 		
 		Connection con = DBConnector.getConnection();
@@ -79,7 +79,7 @@ public class PointDAO {
 		st.close();
 		con.close();
 		
-		return pointDTO;
+		return result;
 	}
 	
 	

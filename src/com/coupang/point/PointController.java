@@ -64,8 +64,13 @@ public class PointController extends HttpServlet {
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
 				
 				int result = pointService.pointAdd(pointDTO);
-				path="./pointList";
-				check = false;
+				String msg = "점수 등록 실패";
+				if(result>0) {
+					msg = "점수 등록 성공";
+				}
+				request.setAttribute("result", msg);
+				request.setAttribute("path", "./pointList.jsp");
+				path="../WEB-INF/views/common/result.jsp";
 			}else { 
 				path = "../WEB-INF/views/point/pointAdd.jsp";
 			}
@@ -78,8 +83,18 @@ public class PointController extends HttpServlet {
 				pointDTO.setEng(Integer.parseInt(request.getParameter("eng")));
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
 				int result = pointService.pointMod(pointDTO);
-				check = false;
-				path="./pointSelect?num="+pointDTO.getNum();
+				
+				String msg = "점수 수정 실패";
+				
+				if(result>0) {
+					msg="점수 수정 성공";
+					request.setAttribute("result", msg);
+					request.setAttribute("path", "./pointSelect?num="+pointDTO.getNum());
+				}else {
+					request.setAttribute("result", msg);
+					request.setAttribute("path", "./pointList");
+				}
+				path="../WEB-INF/views/common/result.jsp";
 			}else {
 				int num = Integer.parseInt(request.getParameter("num"));
 				pointDTO = pointService.pointSelect(num);
@@ -98,8 +113,9 @@ public class PointController extends HttpServlet {
 			
 		}else if(command.equals("/pointDelete")) {
 			
+			System.out.println("hi");
 			int num = Integer.parseInt(request.getParameter("num"));
-			PointDTO pointDTO = pointService.pointDelete(num);
+			int result = pointService.pointDelete(num);
 			check = false;
 			path = "./pointList";
 			
