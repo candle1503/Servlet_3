@@ -10,8 +10,33 @@ import com.coupang.util.DBConnector;
 public class PointDAO {
 	// DAO (Data Access Object)
 
+	//5. Mod
+	public int pointMod(PointDTO pointDTO) throws Exception{
+		Connection con = DBConnector.getConnection();
+		
+		String sql= "update point set name=?,kor=?,eng=?,math=?,total=?,avg=? where num = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pointDTO.getName());
+		st.setInt(2, pointDTO.getKor());
+		st.setInt(3, pointDTO.getEng());
+		st.setInt(4, pointDTO.getMath());
+		st.setInt(5, pointDTO.getTotal());
+		st.setDouble(6, pointDTO.getAvg());
+		st.setInt(7, pointDTO.getNum());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
+	
 	//4. Add
 	public int pointAdd(PointDTO pointDTO) throws Exception{
+		int result = 0;
 		
 		Connection con = DBConnector.getConnection();
 		
@@ -27,7 +52,7 @@ public class PointDAO {
 		st.setInt(6, pointDTO.getTotal());
 		st.setDouble(7, pointDTO.getAvg());
 		
-		int result = st.executeUpdate();
+		result = st.executeUpdate();
 		
 		st.close();
 		con.close();
@@ -58,7 +83,7 @@ public class PointDAO {
 	}
 	
 	
-	//2. SelectOne
+	//2. Select
 	public PointDTO pointSelect(int num) throws Exception{
 		PointDTO pointDTO = null;
 	
@@ -71,6 +96,7 @@ public class PointDAO {
 		st.setInt(1, num);
 		
 		ResultSet rs = st.executeQuery();
+		
 		
 		if(rs.next()) {
 			pointDTO = new PointDTO();

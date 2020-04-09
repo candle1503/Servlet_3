@@ -59,7 +59,7 @@
 					<td>영어</td>
 					<td>수학</td>
 					<td>총점</td>
-					<td>평균</td>
+					<td>평균</td>	
 				</tr>
 				
 					<tr class= info>
@@ -74,6 +74,7 @@
 			</table>
 			
 			<a href="./pointDelete?num=${dto.num}" class="btn btn-danger" >Delete</a>
+			<a href="./pointMod?num=${dto.num}" class="btn btn-primary" >Update</a>
 		</div>
 </body>
 </html>
