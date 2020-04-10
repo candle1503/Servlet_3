@@ -31,7 +31,7 @@
 					</tr>
 			</table>
 			
-			<button class="btn btn-primary">Update</button>
+			<button class="btn btn-primary" id="update">Update</button>
 			<button class="btn btn-danger" id="del" name=result>Delete</button>
 		</div>
 		
@@ -43,12 +43,16 @@
 			$("#del").click(function() {
 				var result = confirm("탈퇴 할거냐??");
 				console.log(result);
-			if(result==true){
+			if(result){
 				location.href="./memberDelete";
 			}else{
+				location.href="#";
 			}
 			});
 		
+			$("#update").on("click", function() {
+				location.href="./memberUpdate";
+			});
 		</script>
 		
 </body>

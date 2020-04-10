@@ -10,6 +10,30 @@ import com.coupang.util.DBConnector;
 public class MemberDAO {
 
 
+	
+	//4. memberUpdate
+		public int memberUpdate(MemberDTO memberDTO) throws Exception{
+			int result =0;
+			
+			Connection con = DBConnector.getConnection();
+			
+			String sql = "update member set name=?, phone=?, email=?, age=? where id=?";
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setString(1, memberDTO.getName());
+			st.setString(2, memberDTO.getphone());
+			st.setString(3, memberDTO.getEmail());
+			st.setInt(4, memberDTO.getAge());
+			st.setString(5, memberDTO.getId());
+			
+			result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+			return result;
+		}
 
 	//3. memberDelete
 		public int memberDelete(MemberDTO memberDTO) throws Exception{
