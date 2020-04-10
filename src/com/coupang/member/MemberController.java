@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.coupang.point.PointService;
 
@@ -87,9 +88,16 @@ public class MemberController extends HttpServlet {
 				
 			}else {
 				path = "..//WEB-INF/views/member/memberLogin.jsp";
-			}
-			
+			} 
+		} else if (command.equals("/memberLogout")) {
+			HttpSession session = request.getSession();
+			// session.removeAttribute("member");
+			session.invalidate();
+			check = false;
+			path = "../";
 		}else if(command.equals("/memberPage")) {
+			path="..//WEB-INF/views/member/memberPage.jsp";
+			
 		}else if(command.equals("/memberUpdate")) {
 			if(method.equals("POST")) {
 						
@@ -97,14 +105,28 @@ public class MemberController extends HttpServlet {
 				
 			}
 		}else if(command.equals("/memberDelete")) {
+			MemberDTO memberDTO = new MemberDTO();
+			HttpSession session = request.getSession();
+			memberDTO = (MemberDTO) session.getAttribute("member");
+			int result = memberService.memberDelete(memberDTO);
+			
+			if(result>0) {
+				request.setAttribute("result", "Delete!!!");
+				request.setAttribute("path", "../");
+				path="../WEB-INF/views/common/result.jsp";
+				session.invalidate();
+			}
+			
 		}
-		}
+	}
 		catch (Exception e) {
 			// TODO: handle exception
 		}
 		if(check) {
 			RequestDispatcher view = request.getRequestDispatcher(path);
 			view.forward(request, response);
+		}else {
+			response.sendRedirect(path);
 		}
 	}
 	/**

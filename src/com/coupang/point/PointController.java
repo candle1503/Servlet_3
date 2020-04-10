@@ -53,30 +53,30 @@ public class PointController extends HttpServlet {
 			path = "../WEB-INF/views/point/pointList.jsp";
 			
 		}else if(command.equals("/pointAdd")) {
+			
 			if(method.equals("POST")) {
-				
 				PointDTO pointDTO = new PointDTO();
-				
 				pointDTO.setName(request.getParameter("name"));
 				pointDTO.setNum(Integer.parseInt(request.getParameter("num")));
 				pointDTO.setKor(Integer.parseInt(request.getParameter("kor")));
 				pointDTO.setEng(Integer.parseInt(request.getParameter("eng")));
 				pointDTO.setMath(Integer.parseInt(request.getParameter("math")));
-				
 				int result = pointService.pointAdd(pointDTO);
-				String msg = "점수 등록 실패";
+				String msg="점수 등록 실패";
 				if(result>0) {
 					msg = "점수 등록 성공";
-				}
+				}				
+				
 				request.setAttribute("result", msg);
-				request.setAttribute("path", "./pointList.jsp");
-				path="../WEB-INF/views/common/result.jsp";
-			}else { 
-				path = "../WEB-INF/views/point/pointAdd.jsp";
+				request.setAttribute("path", "./pointList");
+				path = "../WEB-INF/views/common/result.jsp";
+				
+			}else {
+				path="../WEB-INF/views/point/pointAdd.jsp";
 			}
 		}else if(command.equals("/pointMod")) {
-			PointDTO pointDTO = new PointDTO();
 			if(method.equals("POST")) {
+				PointDTO pointDTO = new PointDTO();
 				pointDTO.setName(request.getParameter("name"));
 				pointDTO.setNum(Integer.parseInt(request.getParameter("num")));
 				pointDTO.setKor(Integer.parseInt(request.getParameter("kor")));
@@ -85,21 +85,22 @@ public class PointController extends HttpServlet {
 				int result = pointService.pointMod(pointDTO);
 				
 				String msg = "점수 수정 실패";
-				
 				if(result>0) {
-					msg="점수 수정 성공";
-					request.setAttribute("result", msg);
+					msg = "점수 수정 성공";
 					request.setAttribute("path", "./pointSelect?num="+pointDTO.getNum());
 				}else {
-					request.setAttribute("result", msg);
 					request.setAttribute("path", "./pointList");
 				}
+				
+				request.setAttribute("result", msg);
+				
 				path="../WEB-INF/views/common/result.jsp";
+				
 			}else {
 				int num = Integer.parseInt(request.getParameter("num"));
-				pointDTO = pointService.pointSelect(num);
+				PointDTO pointDTO = pointService.pointSelect(num);
 				request.setAttribute("dto", pointDTO);
-				path = "../WEB-INF/views/point/pointMod.jsp";
+				path="../WEB-INF/views/point/pointMod.jsp";
 			}
 		}else if(command.equals("/pointSelect")) {
 			

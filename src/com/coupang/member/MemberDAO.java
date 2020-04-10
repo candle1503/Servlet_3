@@ -7,10 +7,31 @@ import java.util.ArrayList;
 
 import com.coupang.util.DBConnector;
 
+public class MemberDAO {
 
+
+
+	//3. memberDelete
+		public int memberDelete(MemberDTO memberDTO) throws Exception{
+			
+			Connection con = DBConnector.getConnection();
+			
+			String sql = "delete from member where id=?";
+			
+			PreparedStatement st = con.prepareStatement(sql);
+			
+			st.setString(1, memberDTO.getId());
+			
+			int result = st.executeUpdate();
+			
+			st.close();
+			con.close();
+			
+			return result;
+			
+		}
 
 	//2. memberLogin
-	public class MemberDAO {
 		
 		public MemberDTO memberLogin(MemberDTO memberDTO)throws Exception{
 			

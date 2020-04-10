@@ -13,14 +13,14 @@
 - /WEB-INF/views/member/...
 
 URL
-/member/memberJoin			memberJoin.jsp			GET
-/member/memberJoin									POST
-/member/memberLogin			memberLogin.jsp			GET
-/member/memberLogin									POST
-/member/memberPage			memberPage.jsp			GET
-/member/memberUpdate		memberUpdate.jsp		GET
-/member/memberUpdate								POST
-/member/memberDelete								GET
+- /member/memberJoin			memberJoin.jsp			GET
+- /member/memberJoin									POST
+- /member/memberLogin			memberLogin.jsp			GET
+- /member/memberLogin									POST
+- /member/memberPage			memberPage.jsp			GET
+- /member/memberUpdate		memberUpdate.jsp		GET
+- /member/memberUpdate								POST
+- /member/memberDelete								GET
 
 
 ### point
