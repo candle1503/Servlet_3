@@ -29,6 +29,7 @@ public class BoardDAO {
 			boardDTO.setId(rs.getString("id"));
 			boardDTO.setCreatDate(rs.getDate("creatDate"));
 			boardDTO.setHit(rs.getInt("hit"));
+			boardDTO.setText(rs.getString("text"));
 		}
 		
 		st.close();

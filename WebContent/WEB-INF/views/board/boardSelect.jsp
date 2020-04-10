@@ -27,11 +27,10 @@
 						<td>${dto.creatDate}</td>
 						<td>${dto.hit}</td>
 					</tr>
-
-
 			</table>
+					<div class="well">${dto.text}</div>
 			
-			<a href="./#" class="btn btn-primary">글쓰기</a>
+			<a href="./#" class="btn btn-danger">글삭제</a>
 			
 		</div>
 	</div>
