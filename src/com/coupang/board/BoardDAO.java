@@ -15,7 +15,7 @@ public class BoardDAO {
 		int result = 0;
 		Connection con = DBConnector.getConnection();
 		
-		String = "insert into board ("
+		String = "insert into board values(count.NEXTVAL, ''
 		
 		
 		

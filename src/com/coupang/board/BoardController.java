@@ -78,6 +78,8 @@ public class BoardController extends HttpServlet {
 				HttpSession session = request.getSession();
 				MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 				String text = request.getParameter("text");
+				String subject = request.getParameter("subject");
+				System.out.println(subject);
 				int result = boardService.boardAdd(text);
 				
 			}else {
