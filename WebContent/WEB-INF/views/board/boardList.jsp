@@ -35,7 +35,7 @@
 
 			</table>
 			
-			<a href="./#" class="btn btn-primary">글쓰기</a>
+			<a href="./boardAdmin" class="btn btn-primary">글쓰기</a>
 			
 		</div>
 	</div>

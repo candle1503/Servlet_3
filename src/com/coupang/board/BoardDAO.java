@@ -10,6 +10,18 @@ import com.coupang.util.DBConnector;
 public class BoardDAO {
 
 	
+	//3. boardAdd
+	public int boardAdd(String text) throws Exception{
+		int result = 0;
+		Connection con = DBConnector.getConnection();
+		
+		String = "insert into board ("
+		
+		
+		
+		return result;
+	}
+	
 	//2. boardSelect
 	public BoardDTO boardSelect(int num) throws Exception{
 		Connection con = DBConnector.getConnection();

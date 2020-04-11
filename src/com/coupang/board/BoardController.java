@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.coupang.member.MemberDTO;
 import com.coupang.point.PointService;
 
 /**
@@ -60,9 +62,28 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("dto", boardDTO);
 			
 			path = "../WEB-INF/views/board/boardSelect.jsp";
-			
+		}else if(command.equals("/boardAdmin")){
+			HttpSession session = request.getSession();
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+			if(memberDTO.getId().equals("admin")){
+				path="./boardAdd";
+			}else {
+				path="../WEB-INF/views/common/result.jsp";
+				request.setAttribute("result", "관리자만 가능합니다");
+				request.setAttribute("path", "../");
+			}
+		}else if(command.equals("/boardAdd")) {
+			if(method.equals("POST")) {
+				BoardDTO boardDTO = new BoardDTO();
+				HttpSession session = request.getSession();
+				MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+				String text = request.getParameter("text");
+				int result = boardService.boardAdd(text);
+				
+			}else {
+				path="../WEB-INF/views/board/boardAdd.jsp";
+			}
 		}
-			
 		
 		
 		}catch (Exception e) {
