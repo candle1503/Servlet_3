@@ -62,16 +62,17 @@ public class BoardController extends HttpServlet {
 			request.setAttribute("dto", boardDTO);
 			
 			path = "../WEB-INF/views/board/boardSelect.jsp";
-		}else if(command.equals("/boardAdmin")){
-			HttpSession session = request.getSession();
-			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-			if(memberDTO.getId().equals("admin")){
-				path="./boardAdd";
-			}else {
-				path="../WEB-INF/views/common/result.jsp";
-				request.setAttribute("result", "관리자만 가능합니다");
-				request.setAttribute("path", "../");
-			}
+//		}else if(command.equals("/boardAdmin")){
+//			HttpSession session = request.getSession();
+//			MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+//			
+//			if(memberDTO.getId().equals("admin")){
+//				path="./boardAdd";
+//			}else {
+//				path="../WEB-INF/views/common/result.jsp";
+//				request.setAttribute("result", "관리자만 가능합니다");
+//				request.setAttribute("path", "../");
+//			}
 		}else if(command.equals("/boardAdd")) {
 			if(method.equals("POST")) {
 				BoardDTO boardDTO = new BoardDTO();
@@ -84,7 +85,6 @@ public class BoardController extends HttpServlet {
 				boardDTO.setText(text);
 				
 				int result = boardService.boardAdd(boardDTO);
-				System.out.println(result);
 				if(result>0) {
 					path="../WEB-INF/views/common/result.jsp";
 					request.setAttribute("path", "../");

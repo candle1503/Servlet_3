@@ -20,7 +20,9 @@
 					<td>NAME</td>
 					<td>DATE</td>
 					<td>HIT</td>
+					
 				</tr>
+				
 				
 				<c:forEach items="${list}" var="dto">
 					<tr>
@@ -34,9 +36,9 @@
 
 
 			</table>
-			
-			<a href="./boardAdmin" class="btn btn-primary">글쓰기</a>
-			
+			<c:if test="${member.id eq 'admin'}">
+			<a href="./boardAdd" class="btn btn-primary">글쓰기</a>
+			</c:if>
 		</div>
 	</div>
 </body>
