@@ -10,6 +10,21 @@ import com.coupang.util.DBConnector;
 public class BoardDAO {
 
 	
+	//4. boardDelete
+	public int boardDelete(String num) throws Exception{
+		Connection con = DBConnector.getConnection();
+		
+		String sql = "delete board where num = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, num);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
+	
 	//3. boardAdd
 	public int boardAdd(BoardDTO boardDTO) throws Exception{
 		Connection con = DBConnector.getConnection();

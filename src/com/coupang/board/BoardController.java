@@ -95,6 +95,15 @@ public class BoardController extends HttpServlet {
 				path="../WEB-INF/views/board/boardAdd.jsp";
 			}
 		}else if(command.equals("/boardDelete")) {
+			String num = request.getParameter("num");
+			int result = boardService.boardDelete(num);
+			
+			if(result>0) {
+				path="../WEB-INF/views/common/result.jsp";
+				request.setAttribute("result", "삭제성공");
+				request.setAttribute("path", "../");
+			}
+		}else if(command.equals("/boardMod")) {
 			
 		}
 		

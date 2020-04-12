@@ -9,6 +9,11 @@ public class BoardService {
 		boardDAO = new BoardDAO();
 	}
 
+	//4. delete
+	public int boardDelete(String num) throws Exception{
+		return boardDAO.boardDelete(num);
+	}
+	
 	//3. Add
 	public int boardAdd(BoardDTO boardDTO) throws Exception{
 		return boardDAO.boardAdd(boardDTO);

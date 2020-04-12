@@ -30,7 +30,7 @@
 			</table>
 					<div class="well" >${dto.text}</div>
 			<c:if test="${member.id eq 'admin'}">
-			<a href="./boardDelete" class="btn btn-danger">글삭제</a>
+			<a href="./boardDelete?num=${dto.num}" class="btn btn-danger">글삭제</a>
 			<a href="./boardMod" class="btn btn-danger">글수정</a>
 			</c:if>
 		</div>
