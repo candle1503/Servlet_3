@@ -28,9 +28,9 @@
 						<td>${dto.hit}</td>
 					</tr>
 			</table>
-					<div class="well">${dto.text}</div>
+					<div class="well" height=>${dto.text}</div>
 			
-			<a href="./#" class="btn btn-danger">글삭제</a>
+			<a href="./boardDelete" class="btn btn-danger">글삭제</a>
 			
 		</div>
 	</div>

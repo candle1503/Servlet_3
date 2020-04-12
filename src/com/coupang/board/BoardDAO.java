@@ -11,13 +11,21 @@ public class BoardDAO {
 
 	
 	//3. boardAdd
-	public int boardAdd(String text) throws Exception{
-		int result = 0;
+	public int boardAdd(BoardDTO boardDTO) throws Exception{
 		Connection con = DBConnector.getConnection();
 		
-		String = "insert into board values(count.NEXTVAL, ''
+		String sql = "insert into board values(count.NEXTVAL,?,?,?,sysdate,1)";
 		
+		PreparedStatement st = con.prepareStatement(sql);
 		
+		st.setString(1, boardDTO.getSubject());
+		st.setString(2, boardDTO.getText());
+		st.setString(3, boardDTO.getId());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
 		
 		return result;
 	}

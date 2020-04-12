@@ -10,8 +10,8 @@ public class BoardService {
 	}
 
 	//3. Add
-	public int boardAdd(String text) throws Exception{
-		return boardDAO.boardAdd(text);
+	public int boardAdd(BoardDTO boardDTO) throws Exception{
+		return boardDAO.boardAdd(boardDTO);
 	}
 	
 	//2. Select
