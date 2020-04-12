@@ -19,7 +19,7 @@
       <label for="comment">Text:</label>
       <textarea class="form-control" rows="15" id="text" name="text"></textarea>
       <br>
-      <input type="submit" class="btn btn-primary" value="작성완료" name="subject">
+      <input type="submit" class="btn btn-primary" value="작성완료">
     </div>
   </form>
 </div>

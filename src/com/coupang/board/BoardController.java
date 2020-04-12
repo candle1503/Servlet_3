@@ -104,6 +104,29 @@ public class BoardController extends HttpServlet {
 				request.setAttribute("path", "../");
 			}
 		}else if(command.equals("/boardMod")) {
+			request.setAttribute("subject",request.getParameter("subject"));
+			request.setAttribute("text",request.getParameter("text"));
+			request.setAttribute("num", request.getParameter("num"));
+			BoardDTO boardDTO = new BoardDTO();
+			if(method.equals("POST")) {
+				boardDTO.setNum(Integer.parseInt(request.getParameter("num")));
+				boardDTO.setSubject(request.getParameter("subject"));
+				boardDTO.setText(request.getParameter("text"));
+				HttpSession session = request.getSession();
+				MemberDTO memberDTO= (MemberDTO)session.getAttribute("member");
+				boardDTO.setId(memberDTO.getId());
+				int result = boardService.boardMod(boardDTO);
+				System.out.println(result);
+				
+				if(result >0) {
+					path="../WEB-INF/views/common/result.jsp";
+					request.setAttribute("path", "../");
+					request.setAttribute("result", "게시물 수정 완료");
+				}
+				
+			}else {
+				path="../WEB-INF/views/board/boardMod.jsp";
+			}
 			
 		}
 		

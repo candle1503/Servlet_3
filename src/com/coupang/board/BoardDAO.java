@@ -10,6 +10,27 @@ import com.coupang.util.DBConnector;
 public class BoardDAO {
 
 	
+	//5. boardMod
+	public int boardMod(BoardDTO boardDTO) throws Exception{
+		Connection con = DBConnector.getConnection();
+		
+		String sql = "update board SET num = ?, subject=?,text=?,id=?,creatdate=sysdate,hit=?  where num = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, boardDTO.getNum());
+		st.setString(2, boardDTO.getSubject());
+		st.setString(3, boardDTO.getText());
+		st.setString(4, boardDTO.getId());
+		st.setInt(5, 1);
+		st.setInt(6, boardDTO.getNum());
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
+	
+	
 	//4. boardDelete
 	public int boardDelete(String num) throws Exception{
 		Connection con = DBConnector.getConnection();
