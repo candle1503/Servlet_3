@@ -36,8 +36,8 @@ public class MemberController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		getServletConfig(); // 현재 Servlet의 객체 저장
-		getServletContext(); // 전체 정보 저장 객체(application, Context)
+		getServletConfig().getInitParameter(""); // 현재 Servlet의 객체 저장
+		getServletContext().getInitParameter(""); // 전체 정보 저장 객체(application, Context)
 		
 		//PathInfo
 			String command = request.getPathInfo();
