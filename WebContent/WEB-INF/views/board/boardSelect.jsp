@@ -28,7 +28,9 @@
 						<td>${dto.hit}</td>
 					</tr>
 			</table>
-					<div class="well" >${dto.text}</div>
+      <label for="comment">Text:</label>
+      <textarea class="form-control" rows="15" id="text" name="text" readonly="readonly">${dto.text}</textarea>
+      <br>
 			<c:if test="${member.id eq 'admin'}">
 			<a href="./boardDelete?num=${dto.num}" class="btn btn-danger">글삭제</a>
 			<a href="./boardMod?num=${dto.num}&subject=${dto.subject}&text=${dto.text}" class="btn btn-danger">글수정</a>

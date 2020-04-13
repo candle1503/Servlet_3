@@ -30,9 +30,6 @@ public class PointController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글 Encoding 처리
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
 		
 		//pathInfo
 		String command = request.getPathInfo();

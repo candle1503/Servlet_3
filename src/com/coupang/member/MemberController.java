@@ -35,10 +35,10 @@ public class MemberController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글 Encoding 처리
-			request.setCharacterEncoding("UTF-8");
-			response.setCharacterEncoding("UTF-8");
 			
+		getServletConfig(); // 현재 Servlet의 객체 저장
+		getServletContext(); // 전체 정보 저장 객체(application, Context)
+		
 		//PathInfo
 			String command = request.getPathInfo();
 		//Method 형식

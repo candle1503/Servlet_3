@@ -28,8 +28,6 @@ public class HomeController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8"); 		//모든 servlet에 다 넣어줌
 	
 		RequestDispatcher view = request.getRequestDispatcher("./WEB-INF/views/index.jsp");
 		view.forward(request, response);

@@ -34,9 +34,6 @@ public class BoardController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글 Encoding 처리
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
 		
 		//pathInfo
 		String command = request.getPathInfo();
@@ -87,7 +84,7 @@ public class BoardController extends HttpServlet {
 				int result = boardService.boardAdd(boardDTO);
 				if(result>0) {
 					path="../WEB-INF/views/common/result.jsp";
-					request.setAttribute("path", "../");
+					request.setAttribute("path", "./boardList");
 					request.setAttribute("result", "게시물 추가 완료");
 				}
 				
@@ -101,7 +98,7 @@ public class BoardController extends HttpServlet {
 			if(result>0) {
 				path="../WEB-INF/views/common/result.jsp";
 				request.setAttribute("result", "삭제성공");
-				request.setAttribute("path", "../");
+				request.setAttribute("path", "./boardList");
 			}
 		}else if(command.equals("/boardMod")) {
 			request.setAttribute("subject",request.getParameter("subject"));
@@ -116,11 +113,10 @@ public class BoardController extends HttpServlet {
 				MemberDTO memberDTO= (MemberDTO)session.getAttribute("member");
 				boardDTO.setId(memberDTO.getId());
 				int result = boardService.boardMod(boardDTO);
-				System.out.println(result);
 				
 				if(result >0) {
 					path="../WEB-INF/views/common/result.jsp";
-					request.setAttribute("path", "../");
+					request.setAttribute("path", "./boardSelect?num="+boardDTO.getNum());
 					request.setAttribute("result", "게시물 수정 완료");
 				}
 				

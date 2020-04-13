@@ -11,7 +11,6 @@
 <body>
 <c:import url="../template/header.jsp"></c:import>
 <div class="container">
-  <h2>Form control: text area</h2>
   <form action="./boardMod?num=${num}" method="post">
     <div class="form-group">
    	 <label for="comment">Subject:</label>
